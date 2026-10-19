@@ -9,7 +9,6 @@
     h1 { font-size: 1.6rem; }
     h2 { font-size: 1.2rem; margin-top: 2rem; }
     p { margin: 0.8rem 0; }
-    .confirm { background: #fff3a3; font-weight: 600; }
   </style>
 </head>
 <body>
@@ -21,8 +20,7 @@
   <p>Press Pulse Log is for adults. Before the log opens you confirm that you are 18 or older, and you agree that the log is health data. There is no password. You first sign in with a one-time code sent to your email. After that, you can add a passkey and use it later. You do not have to add one. If you add one, Supabase stores the public key.</p>
   <p>Supabase stores your email and the log in Ireland. Doses, phases, the calendar and appointments, GKI, pulse sessions, and lab results are encrypted on the phone before they are sent. The encryption is AES-GCM. The key is kept in iCloud Keychain and in a share code. The key is never sent to Supabase, so those entries cannot be read there. Your email, palette colors, and membership are not encrypted. The log includes blood tests, medicines, chemo, and radiation. The owner can change the entries in the app.</p>
   <p>The log is stored because you agreed. The email is stored so you can sign in to that account. Supabase describes its own handling in the <a href="https://supabase.com/privacy">Supabase privacy policy</a>.</p>
-  <p>The one-time code is emailed through Resend, which receives the address only to deliver that message. Resend describes its own handling in the <a href="https://resend.com/legal/privacy-policy">Resend privacy policy</a>.</p>
-  <p class="confirm">[CONFIRM: where Resend processes that email address.]</p>
+  <p>The one-time code is emailed through Resend, which receives the address only to deliver that message. Resend processes and stores that address in the United States. That is where its main processing takes place. Resend can also send a message from Ireland. That only changes the route of the message. It does not store the address in the EU. Resend describes its own handling in the <a href="https://resend.com/legal/privacy-policy">Resend privacy policy</a>.</p>
   <p>The app does not track you and has no ads. Signing out, or deleting the app, removes the session from the phone and leaves the encrypted log at Supabase.</p>
 
   <h2>Short records we keep</h2>
@@ -35,8 +33,7 @@
   <p>You can download a file of the log you can see, including the sign-in email. You can download your consent.</p>
   <p>You can delete your data. That removes the sign-in email and the agreement. A log you own is deleted for everyone in it. A log you only joined stays for the others.</p>
   <p>If you only joined, you can leave the log. It stays for the others. Leaving deletes your sign-in and your email.</p>
-  <p>Deleting removes the rows from the live database. The log otherwise stays until you delete it.</p>
-  <p class="confirm">[CONFIRM: whether the Supabase production project has backups or point-in-time recovery turned on, and how long deleted data can remain in those copies.]</p>
+  <p>Deleting removes the rows at once. No backup copy is kept. The log otherwise stays until you delete it.</p>
 
   <h2>A shared log</h2>
   <p>The owner shows a QR code or a text code. The code contains the key that decrypts the log. Anyone with the code can read the log. Supabase stores only a SHA-256 checksum of the secret part of the code, not the code and not the key.</p>
@@ -58,12 +55,9 @@
   <p>Øyvind Elgvin, a private individual in Norway, is the controller. Contact <a href="mailto:stoyvind@gmail.com">stoyvind@gmail.com</a>.</p>
   <p>Health data in the log is used because you give explicit consent, under GDPR Article 9(2)(a) and Article 6(1)(a). The email address and the account are used to provide the service you asked for, under GDPR Article 6(1)(b).</p>
   <p>You can ask for access, a portable copy, correction, or erasure. You withdraw consent by choosing Delete my data in the app. You can complain to <a href="https://www.datatilsynet.no">Datatilsynet</a>.</p>
-  <p>These processors handle data for the app. Supabase, in the EU (Ireland), stores the database and runs the function that forwards a lab photo. Resend delivers the one-time email code. xAI, in the USA, reads a lab photo when you send one. Apple handles subscription payments and iCloud Keychain, where the encryption key is kept.</p>
-  <p>Lab photos are transferred to xAI in the USA, outside the EEA. The email address is sent to Resend to deliver the code.</p>
-  <p class="confirm">[CONFIRM: the transfer mechanism for xAI (for example standard contractual clauses in a data processing agreement, or the EU-US Data Privacy Framework).]</p>
-  <p class="confirm">[CONFIRM: whether a signed data processing agreement with xAI is in place.]</p>
-  <p class="confirm">[CONFIRM: the transfer mechanism for Resend, if Resend processes the email address outside the EEA (for example standard contractual clauses in a data processing agreement, or the EU-US Data Privacy Framework).]</p>
-  <p class="confirm">[CONFIRM: whether a signed data processing agreement with Resend is in place.]</p>
+  <p>These processors handle data for the app. Supabase, in the EU (Ireland), stores the database and runs the function that forwards a lab photo. Resend, in the United States, delivers the one-time email code. xAI, in the USA, reads a lab photo when you send one. Apple handles subscription payments and iCloud Keychain, where the encryption key is kept.</p>
+  <p>Lab photos are transferred to xAI in the USA, outside the EEA. The owner has accepted xAI's data processing agreement. For this transfer, that agreement includes the EU standard contractual clauses. The agreement is published as the <a href="https://x.ai/legal/data-processing-addendum">xAI data processing addendum</a>.</p>
+  <p>The email address is transferred to Resend in the United States, outside the EEA. The owner has accepted Resend's data processing agreement. For this transfer, that agreement includes the EU standard contractual clauses. Resend (Plus Five Five, Inc.) is also listed as an active participant in the EU-US Data Privacy Framework. That listing is under re-certification review. The agreement is the <a href="https://resend.com/legal/dpa">Resend data processing addendum</a>. The listing is on the <a href="https://www.dataprivacyframework.gov/participant/8907">Data Privacy Framework list</a>.</p>
 
   <h2>Not medical advice</h2>
   <p>The app does not give medical advice. It is a personal log.</p>
