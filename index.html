@@ -51,6 +51,10 @@
       border-top: 1px solid #d8d8d8;
     }
     .contact p { margin: 0.35rem 0; }
+    dl { margin: 0.6rem 0 0.2rem; }
+    dt { font-weight: 600; margin-top: 0.75rem; }
+    dd { margin: 0.1rem 0 0; }
+    li strong { font-weight: 600; }
     .skip {
       position: absolute;
       left: 0.75rem;
@@ -69,44 +73,72 @@
     <p class="updated">Last updated <time datetime="2026-10-20">20 October 2026</time>.</p>
   </header>
   <main id="content">
-    <p class="intro">Press Pulse Log is a personal health log. This page explains what the app processes, why, who can see it, how long it is kept, and your rights.</p>
+    <p class="intro">Press Pulse Log is a personal health log. Privacy is of the utmost importance to us, and we take that responsibility very seriously. This page explains what the app processes, why, who can see it, how long it is kept, and your rights.</p>
 
-    <h2>1. Controller</h2>
-    <p>Øyvind Elgvin, a private individual in Norway, is the controller. He is responsible for Press Pulse Log and for this page. Questions go to <a href="mailto:support@presspulselog.com">support@presspulselog.com</a>.</p>
+    <h2>1. Data controller</h2>
+    <p>Press Pulse Log is currently run by Øyvind Elgvin as a private individual. He is the data controller, which means he decides how and why your personal data is processed and is responsible for it under the GDPR. He is also responsible for this page.</p>
+    <dl>
+      <dt>Data controller</dt>
+      <dd>Øyvind Elgvin</dd>
+      <dt>Service provided by</dt>
+      <dd>Øyvind Elgvin</dd>
+      <dt>Contact</dt>
+      <dd><a href="mailto:support@presspulselog.com">support@presspulselog.com</a></dd>
+    </dl>
 
     <h2>2. What data is processed</h2>
-    <p>There is no password. You first sign in with a one-time code sent to your email. After that, you can add a passkey and use it later. You do not have to add one. If you add one, Supabase stores the public key.</p>
-    <p>Supabase stores your email and the log in Ireland. The log includes blood tests, medicines, chemo, and radiation. It also includes doses, phases, the calendar and appointments, GKI, pulse sessions, and lab results.</p>
-    <p>Doses, phases, the calendar and appointments, GKI, pulse sessions, and lab results are encrypted on the phone before they are sent. The encryption is AES-GCM. The key is kept in iCloud Keychain and in a share code. The key is never sent to Supabase, so those entries cannot be read there. Your email, palette colors, and membership are not encrypted. The owner can change the entries in the app. <a href="#security">Security</a> describes the key, and <a href="#sharing">Who can see it</a> describes a shared log.</p>
-    <p>We also keep a few short records. They do not contain the lab photo or the text of the log.</p>
+    <p>There is no password. You first sign in with a one-time code sent to your email. After that, you can add a passkey and use it later. A passkey is unlocked with the same thing you use to unlock your phone, such as Face ID, Touch ID, or your device passcode. You do not have to add one. If you add one, Supabase stores the public key.</p>
+    <p>Supabase stores your email and the log in Ireland. The log includes blood tests, medicines, chemo, and radiation. Some entries are encrypted on the phone before they are sent, and some account details are not. The next sections list which is which.</p>
+
+    <h2 id="encrypted">3. End-to-end encrypted data</h2>
+    <p>These entries are encrypted on the phone before they are sent. The encryption is AES-GCM. The key is kept in iCloud Keychain and in a share code. The key is never sent to Supabase, so these entries cannot be read there. The owner can change the entries in the app. <a href="#security">Security</a> describes the key, and <a href="#sharing">Who can see it</a> describes a shared log.</p>
     <ul>
-      <li>When you agree, we store that you are an adult, the consent text version 2026-10-17, and the time. If you agree again, that record is replaced.</li>
-      <li>Each lab photo you send adds a record with your user id, the consent text version, the two confirmations, the time you agreed, and the time the photo was used. It has no photo and no email. It is used to limit sends to 20 in 24 hours. It is kept until the account is deleted.</li>
-      <li>The function that sends a lab photo logs only lengths, counts, and error codes. Sign-in audit logs and sessions do not keep your IP address or your email.</li>
+      <li>Doses</li>
+      <li>Phases</li>
+      <li>The calendar and appointments</li>
+      <li>GKI</li>
+      <li>Pulse sessions</li>
+      <li>Lab results</li>
     </ul>
+
+    <h2 id="not-encrypted">4. Data that is not end-to-end encrypted</h2>
+    <p>These are stored or handled in a form the service can read. They do not include the text of the encrypted log.</p>
+    <ul>
+      <li><strong>Email address.</strong> Stored so you can sign in to that account.</li>
+      <li><strong>Palette colors.</strong> Stored with the account. They are not part of the encrypted log.</li>
+      <li><strong>Membership.</strong> Stored so the app knows which log you own or have joined. It is not part of the encrypted log.</li>
+      <li><strong>Passkey public key.</strong> Stored only if you add a passkey, so you can sign in with it later.</li>
+      <li><strong>Your agreement that you are an adult.</strong> We store that you are an adult, the consent text version 2026-10-17, and the time, so there is a record of that agreement. If you agree again, that record is replaced.</li>
+      <li><strong>A record for each lab photo you send.</strong> It has your user id, the consent text version, the two confirmations, the time you agreed, and the time the photo was used. It has no photo and no email. It is used to limit sends to 20 in 24 hours, and it is kept until the account is deleted.</li>
+      <li><strong>The cropped lab photo, when you send one.</strong> This is the photo itself, not the lab result saved in the log. It is sent to be read for interpretation only after you confirm that the name and ID number are cropped out and you agree to send it. We do not store the photo, and xAI does not store it.</li>
+      <li><strong>A checksum of the share code.</strong> Supabase stores only a SHA-256 checksum of the secret part of the code, not the code and not the key, so a code can be checked without holding the key.</li>
+      <li><strong>Account ID and subscription status, from app version 1.1.</strong> RevenueCat receives the app’s random account ID (the Supabase user ID, not your email) and the App Store purchase and subscription status, to determine access to paid features. <a href="#providers">Service providers</a> explains that check.</li>
+    </ul>
+
+    <h2>5. Other data</h2>
+    <p>The function that sends a lab photo logs only lengths, counts, and error codes. Those notes do not contain the lab photo or the text of the log. Sign-in audit logs and sessions do not keep your IP address or your email.</p>
     <p>Language, appearance, and zoom stay on this phone. The sign-in session stays in the keychain on the phone. The key for xAI is a secret at Supabase. It is not on the phone.</p>
     <p>Feedback opens the Mail app. What you send is the note you write, plus the app version, the iOS version, and the language. The log is not attached.</p>
-    <p>From app version 1.1, RevenueCat receives the app’s random account ID, which is the Supabase user ID, and the App Store purchase and subscription status. It does not receive your email. <a href="#providers">Service providers</a> explains that check.</p>
     <p>The app does not track you and has no ads.</p>
 
-    <h2>3. Health data (explicit consent)</h2>
+    <h2>6. Health data (explicit consent)</h2>
     <p>Press Pulse Log is for adults. Before the log opens you confirm that you are 18 or older, and you agree that the log is health data.</p>
     <p>Health data in the log is used because you give explicit consent, under GDPR Article 9(2)(a) and Article 6(1)(a).</p>
     <p>The app does not give medical advice. It is a personal log.</p>
 
-    <h2>4. Purposes</h2>
+    <h2>7. Purposes</h2>
     <p>The log is stored because you agreed. The email is stored so you can sign in to that account. The email address and the account are used to provide the service you asked for, under GDPR Article 6(1)(b).</p>
     <p>The one-time code is emailed so you can sign in. A lab photo is sent for interpretation only after you confirm that the name and ID number are cropped out, and you agree to send it. The short record of that send is used to limit sends to 20 in 24 hours.</p>
     <p>From app version 1.1, the account ID and the App Store purchase and subscription status are used to determine access to paid features. Before a lab photo is sent for interpretation, the server checks that status with RevenueCat.</p>
     <p>Signing out, or deleting the app, removes the session from the phone and leaves the encrypted log at Supabase.</p>
 
-    <h2 id="sharing">5. Who can see it</h2>
+    <h2 id="sharing">8. Who can see it</h2>
     <p>The owner can change the entries in the app.</p>
     <p>To share a log, the owner shows a QR code or a text code. The code contains the key that decrypts the log. Anyone with the code can read the log. Supabase stores only a SHA-256 checksum of the secret part of the code, not the code and not the key.</p>
     <p>A person who joins can read the whole log, including blood tests, medicines, chemo, radiation, and GKI, and cannot change it. A new code stops new people from joining with the old code. Phones that already have the key can still read.</p>
     <p>A person who only reads a shared log does not pay.</p>
 
-    <h2 id="providers">6. Service providers</h2>
+    <h2 id="providers">9. Service providers</h2>
     <p>These processors handle data for the app.</p>
 
     <h3>Supabase</h3>
@@ -128,35 +160,35 @@
     <p>From app version 1.1, RevenueCat, Inc., in the United States, is a service provider for subscription management. It receives the app’s random account ID (the Supabase user ID, not your email) and the App Store purchase and subscription status, to determine access to paid features. Before a lab photo is sent for interpretation, the server checks that status with RevenueCat.</p>
     <p>The account ID and subscription status are transferred to RevenueCat in the United States, outside the EEA. For this transfer, RevenueCat’s data processing addendum includes the EU standard contractual clauses. RevenueCat’s privacy policy says customer data sent to RevenueCat is stored on Amazon Web Services in the United States. The addendum is the <a href="https://www.revenuecat.com/dpa">RevenueCat data processing addendum</a>. RevenueCat describes its own handling in the <a href="https://www.revenuecat.com/privacy">RevenueCat privacy policy</a>.</p>
 
-    <h2>7. Photos and files</h2>
+    <h2>10. Photos and files</h2>
     <p>A lab photo is taken with the camera. The app does not import a photo from the library, and it does not import a PDF. You crop the photo. The cropped file is a JPEG or PNG. You confirm that the name and ID number are cropped out, and you agree to send it.</p>
     <p>We do not store the photo. Feedback opens the Mail app. What you send is the note you write, plus the app version, the iOS version, and the language. The log is not attached.</p>
 
-    <h2 id="ai">8. AI</h2>
+    <h2 id="ai">11. AI</h2>
     <p>The cropped photo is sent to a Supabase function called interpret-lab, and from there to xAI at api.x.ai in the USA, outside the EEA. This happens only after those two confirmations. The rest of the log is not sent. The request sets store to false, which tells xAI not to store the photo. The xAI account is set to Zero Data Retention. We do not store the photo, and xAI does not store it. Nothing from a reading is saved to the log until you approve the draft.</p>
     <p>From app version 1.1, the server checks the subscription status with RevenueCat before the photo is sent. That check uses the account ID and the subscription status. The photo is not sent to RevenueCat.</p>
     <p>xAI describes its own handling in the <a href="https://x.ai/legal/privacy-policy">xAI privacy policy</a>.</p>
 
-    <h2 id="security">9. Security</h2>
-    <p>Doses, phases, the calendar and appointments, GKI, pulse sessions, and lab results are encrypted on the phone before they are sent. The encryption is AES-GCM. The key is kept in iCloud Keychain and in a share code. The owner shows that code as a QR code or a text code. The key is never sent to Supabase, so those entries cannot be read there. Your email, palette colors, and membership are not encrypted.</p>
+    <h2 id="security">12. Security</h2>
+    <p>Doses, phases, the calendar and appointments, GKI, pulse sessions, and lab results are encrypted on the phone before they are sent. The encryption is AES-GCM. The key is kept in iCloud Keychain and in a share code. The owner shows that code as a QR code or a text code. The key is never sent to Supabase, so those entries cannot be read there. Your email, palette colors, and membership are not encrypted. The full lists are under <a href="#encrypted">End-to-end encrypted data</a> and <a href="#not-encrypted">Data that is not end-to-end encrypted</a>.</p>
     <p>Supabase stores only a SHA-256 checksum of the secret part of the share code, not the code and not the key. The sign-in session stays in the keychain on the phone. If you add a passkey, Supabase stores the public key. Sign-in audit logs and sessions do not keep your IP address or your email. The key for xAI is a secret at Supabase. It is not on the phone.</p>
 
-    <h2>10. Retention</h2>
+    <h2>13. Retention</h2>
     <p>The log stays until you delete it. Deleting removes the rows at once. No backup copy is kept.</p>
     <p>If you agree again, the record of that agreement is replaced. The record added for each lab photo you send is kept until the account is deleted. We do not store the photo, and xAI does not store it.</p>
     <p>Signing out, or deleting the app, removes the session from the phone and leaves the encrypted log at Supabase.</p>
 
-    <h2>11. Your rights</h2>
+    <h2>14. Your rights</h2>
     <p>You can ask for access, a portable copy, correction, or erasure. In Settings you can download a file of the log you can see, including the sign-in email. You can download your consent.</p>
     <p>You withdraw consent by choosing Delete my data in the app.</p>
     <p>You can complain to the Norwegian Data Protection Authority, <a href="https://www.datatilsynet.no">Datatilsynet</a>.</p>
 
-    <h2>12. Deleting your account</h2>
+    <h2>15. Deleting your account</h2>
     <p>You can delete your data. That removes the sign-in email and the agreement. A log you own is deleted for everyone in it. A log you only joined stays for the others.</p>
     <p>If you only joined, you can leave the log. It stays for the others. Leaving deletes your sign-in and your email.</p>
     <p>Deleting removes the rows at once. No backup copy is kept. Cancelling the subscription does not delete the log. Signing out, or deleting the app, removes the session from the phone and leaves the encrypted log at Supabase.</p>
 
-    <h2>13. Changes</h2>
+    <h2>16. Changes</h2>
     <p>If what this page describes changes, the page will be updated. The date at the top is when it was last updated.</p>
   </main>
   <footer class="contact">
