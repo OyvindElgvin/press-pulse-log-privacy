@@ -75,7 +75,7 @@
     <p class="updated">Last updated <time datetime="2026-10-20">20 October 2026</time>.</p>
   </header>
   <main id="content">
-    <p class="intro">Press Pulse Log is a personal health log. Privacy is of the utmost importance, and that responsibility is taken very seriously. This page explains what the app processes, why, who can see it, how long it is kept, and your rights.</p>
+    <p class="intro">Press Pulse Log is a personal health log. Privacy is of the utmost importance, and that responsibility is taken very seriously, as this text hopefully shows. This page explains what the app processes, why, who can see it, how long it is kept, and your rights.</p>
 
     <h2>How your privacy is protected</h2>
     <p>The app is built to collect as little as it needs, and to protect privacy from the start (data minimisation and privacy by design, GDPR Article 25). The app only asks for an email address. It does not ask for your name, or for other identifying details. Supabase is the database where the app stores the encrypted log. Your email address is stored only in Supabase’s separate sign-in system, not in the tables that hold the log. The log is linked only to a random account ID. The health entries are end-to-end encrypted, which means they are encrypted on your phone before they are sent and stored in the database, so they cannot be read where they are stored. Your email address identifies the account.</p>
@@ -101,7 +101,7 @@
       <li><strong>Doses.</strong> Medicine, day, and amount.</li>
       <li><strong>Phases.</strong> The phases, and which phase each day belongs to.</li>
       <li><strong>Calendar appointments.</strong> Day, time, title, kind, and note.</li>
-      <li><strong>GKI readings</strong> (glucose ketone index). Day, time, value, and note.</li>
+      <li><strong>GKI measurements</strong> (glucose ketone index). Day, time, value, and note.</li>
       <li><strong>Pulse sessions.</strong> Including hyperbaric oxygen (HBOT), intravenous vitamin C (IV-C), exercise with oxygen (EWOT), chemotherapy, and radiation. Day, kind, amount, duration, and time.</li>
       <li><strong>Lab results</strong> (blood tests and markers). Day, marker, value, unit, label, and reference range.</li>
     </ul>
@@ -109,7 +109,7 @@
     <h2 id="encryption">4. How encryption works</h2>
     <p>Supabase stores the log in Ireland. Each row is encrypted on your phone before it is sent and stored in the database. The method is called AES-GCM. The key that decrypts your log is created on your phone. It is stored in your iCloud Keychain and inside the QR share code. The decryption key is never sent to the database. Using the key requires Face ID, Touch ID, or your device passcode. These entries cannot be read at Supabase. What is stored is only an id for the row, an id for the log, and the encrypted contents. The person who created the log can change its entries. People who joined with the share code can only read them. <a href="#sharing">Who can see it</a> describes a shared log.</p>
     <p>A few details on these rows are not encrypted: the row’s id, which log the row belongs to, the number of rows, and how large the encrypted contents are. The table itself shows the category, for example that lab rows exist. The rows have no time of their own recorded beside them. A time you type in, such as an appointment time, is inside the encrypted entry.</p>
-    <p>The database uses row-level security. A signed-in user can only reach the rows of logs they created or have joined. Nobody can read another person’s log through the database. Those rows are encrypted anyway.</p>
+    <p>The database uses Row-Level Security (RLS). A signed-in user can only reach the rows of logs they created or have joined. Nobody can read another person’s log through the database. Those rows are encrypted anyway.</p>
 
     <h2 id="not-encrypted">5. Data that is not end-to-end encrypted</h2>
     <p>These are stored or handled in a form the service can read. They do not include the text of the encrypted log.</p>
@@ -120,18 +120,25 @@
       <li><strong>A one-way fingerprint of the share secret.</strong> The QR share code contains a random secret that lets someone join your log. Supabase stores only a one-way fingerprint (a SHA-256 hash) of it, so the code itself cannot be recovered from the database. The key and the secret themselves are never stored.</li>
       <li><strong>Phase colours.</strong> Stored only so each phase can be shown in its colour.</li>
       <li><strong>Health-data consent.</strong> The policy version (2026-10-17), your confirmation that you are an adult, and the time, so there is a record of that agreement. If you accept an updated version of the consent, for example after the privacy terms change, that record is replaced and only the latest consent is kept.</li>
-      <li><strong>A record for each photo of your blood test results (a lab photo) you send:</strong>
+      <li><strong>A record for each photo of your blood test results (a lab photo) you send.</strong>
         <ul>
-          <li>The consent you gave and the policy version.</li>
-          <li>The time the photo was used.</li>
-          <li>No photo and no email.</li>
-          <li>Used to enforce a limit of 20 sends in 24 hours.</li>
-          <li>Kept until the account is deleted.</li>
+          <li><strong>Stored.</strong>
+            <ul>
+              <li>The consent you gave and the policy version.</li>
+              <li>The time the photo was used.</li>
+            </ul>
+          </li>
+          <li><strong>Not stored.</strong>
+            <ul>
+              <li>The photo.</li>
+              <li>The email address.</li>
+            </ul>
+          </li>
         </ul>
+        <p>Used to enforce a limit of 20 sends in 24 hours. Kept until the account is deleted.</p>
       </li>
       <li><strong>Passkey public key and sign-in session data.</strong> The public key is stored only if you add a passkey, so you can sign in with it later. IP addresses are removed from sign-in sessions and from the records of those sign-ins.</li>
       <li><strong>Subscription status.</strong> Handled with RevenueCat and Apple. RevenueCat receives only the account ID and the App Store receipt, not your email, to determine access to paid features. <a href="#providers">Service providers</a> explains that check.</li>
-      <li><strong>A photo of your blood test results, when you choose to have it interpreted.</strong> It is sent to xAI for interpretation and is never stored. The image is cropped and re-drawn on the phone as a JPEG, then sent with no account ID, no email, and no other log data. You confirm that the name and ID number are cropped out, and you agree to send it, before it goes. The blood test values come back to your phone, and when you save them they are encrypted like the rest of your log.</li>
     </ul>
 
     <h2>6. Other data</h2>
@@ -149,14 +156,14 @@
     <p>The app does not give medical advice. It is a personal log.</p>
 
     <h2>9. Purposes</h2>
-    <p>Press Pulse Log is here to help you keep track of your health data during a difficult period. That includes doses, treatments, readings, and blood tests.</p>
+    <p>Press Pulse Log is here to help you keep track of your health data during a difficult period. That includes doses, treatments, measurements, and blood tests.</p>
     <p>Some data is used only to support that: so you can sign in, share a log with people you choose, optionally have a photo of your blood test results interpreted, manage a subscription, and contact support. Your email address and account are used to provide the service you asked for, under GDPR Article 6(1)(b). Health data is covered under <a href="#health">Health data</a>.</p>
     <p>Your data is never sold. It is not used for ads or tracking.</p>
 
     <h2 id="sharing">10. Who can see it</h2>
     <p>The person who created the log is the user who signs in and enters the health data. That person can change the entries. People who join with the share code are members. They can only read the log. Your log belongs to the person who created it. Øyvind Elgvin, the data controller, cannot read the encrypted entries.</p>
     <p>To share a log, the person who created it shows a QR code or a text code. The code contains the key that opens the encrypted log. Anyone with the code can read the log. The QR share code contains a random secret that lets someone join your log. Supabase stores only a one-way fingerprint (a SHA-256 hash) of that secret, so the code itself cannot be recovered from the database. The key and the secret are never stored.</p>
-    <p>A member can read the whole log, including medicines, doses, phases, appointments, GKI readings, pulse sessions (including chemotherapy and radiation), and lab results, and cannot change it. A new code stops new people from joining with the old code. Phones that already have the key can still read.</p>
+    <p>A member can read the whole log, including medicines, doses, phases, appointments, GKI measurements, pulse sessions (including chemotherapy and radiation), and lab results, and cannot change it. A new code stops new people from joining with the old code. Phones that already have the key can still read.</p>
     <p>A person who only reads a shared log does not pay.</p>
 
     <h2 id="providers">11. Service providers</h2>
@@ -188,13 +195,13 @@
     <p>Feedback opens the Mail app. What you send is the note you write, plus the app version, the iOS version, and the language. The log is not attached. It goes to <a href="mailto:support@presspulselog.com">support@presspulselog.com</a>.</p>
 
     <h2 id="ai">14. AI</h2>
-    <p>A photo of your blood test results (a lab photo) is cropped and re-drawn on the phone, then sent through a Supabase task called interpret-lab, and from there to xAI at api.x.ai in the USA, outside the European Economic Area. This happens only after those two confirmations. It is sent with no account ID, no email, and no other log data. The request tells xAI not to store the photo. In that request the setting is called store: false. xAI processes the image under Zero Data Retention (ZDR), so the image is not stored or used for training after the response. The photo is never stored. The blood test values are sent back to your phone. Nothing is saved to the log until you approve the draft. The blood test values are encrypted on your phone before they are stored in the Supabase database.</p>
+    <p>A photo of your blood test results (a lab photo) is cropped and re-drawn on the phone as a JPEG, then sent through a Supabase task called interpret-lab, and from there to xAI at api.x.ai in the USA, outside the European Economic Area. You confirm that the name and ID number are cropped out, and you agree to send it, before it goes. It is sent with no account ID, no email, and no other log data. The request tells xAI not to store the photo. In that request the setting is called store: false. xAI processes the image under Zero Data Retention (ZDR), so the image is not stored or used for training after the response. The photo is never stored. The blood test values are sent back to your phone. Nothing is saved to the log until you approve the draft. The blood test values are encrypted on your phone before they are stored in the Supabase database.</p>
     <p>The server checks the subscription status with RevenueCat before the photo is sent. That check uses the account ID and the App Store receipt. The photo is not sent to RevenueCat.</p>
     <p>xAI describes its own handling in the <a href="https://x.ai/legal/privacy-policy">xAI privacy policy</a>.</p>
 
     <h2 id="security">15. Security</h2>
-    <p>Medicines, doses, phases, calendar appointments, GKI readings, pulse sessions, and lab results are encrypted on your phone before they are sent. <a href="#encryption">How encryption works</a> describes the key. The key that decrypts your data is kept in your iCloud Keychain and in the QR share code. The decryption key is never sent to the database. The person who created the log shows that code as a QR code or a text code. The full lists are under <a href="#encrypted">End-to-end encrypted data</a> and <a href="#not-encrypted">Data that is not end-to-end encrypted</a>.</p>
-    <p>The database uses row-level security. A signed-in user can only reach the rows of logs they created or have joined. Nobody can read another person’s log through the database. Those rows are encrypted anyway.</p>
+    <p>Medicines and supplements, doses, phases, calendar appointments, GKI measurements, pulse sessions, and lab results are encrypted on your phone before they are sent to the database. <a href="#encryption">How encryption works</a> describes the key. The key that decrypts your data is kept in your iCloud Keychain and in the QR share code. The decryption key is never sent to the database. The person who created the log shows that code as a QR code or a text code. The full lists are under <a href="#encrypted">End-to-end encrypted data</a> and <a href="#not-encrypted">Data that is not end-to-end encrypted</a>.</p>
+    <p>The database uses Row-Level Security (RLS). A signed-in user can only reach the rows of logs they created or have joined. Nobody can read another person’s log through the database. Those rows are encrypted anyway.</p>
     <p>The QR share code contains a random secret that lets someone join your log. Supabase stores only a one-way fingerprint (a SHA-256 hash) of that secret, so the code itself cannot be recovered from the database. The key and the secret are never stored. The sign-in session stays in the phone’s secure storage (the keychain). If you add a passkey, Supabase stores the public key. Sign-in logs and the other technical logs are described under <a href="#logging">Logging</a>. The separate key the app uses to reach xAI is kept at Supabase. It is not on the phone.</p>
 
     <h2>16. Retention</h2>
