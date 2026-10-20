@@ -90,7 +90,7 @@
     </dl>
 
     <h2>2. Signing in</h2>
-    <p>There is no password. You first sign in with a one-time code sent to your email through Resend. After that, you can add a passkey and use it later. A passkey is unlocked with the same thing you use to unlock your phone, such as Face ID, Touch ID, or your device passcode. You do not have to add one. If you add one, Supabase stores the public key.</p>
+    <p>There is no password. You first sign in with a one-time code sent to your email through Resend. After that, you can add a passkey and use it later. A passkey is unlocked with the same thing you use to unlock your phone, such as Face ID, Touch ID, or your device passcode. You do not have to add one. If you add one, Supabase stores the public key. We strongly recommend creating a passkey and saving it in iCloud Keychain or a password manager, so signing in later is quick and easy, without waiting for an email code. The private key stays in iCloud Keychain or the password manager, and Supabase keeps only the public key.</p>
 
     <h2 id="encrypted">3. End-to-end encrypted data</h2>
     <p>Supabase stores the log in Ireland. Each row is sealed on the phone before it is uploaded. The encryption is AES-GCM, with a 256-bit key created on the phone. The key is kept in iCloud Keychain and in the QR share code. Using the key requires Face ID, Touch ID, or your device passcode. The key is never sent to Supabase, so these entries cannot be read there. The stored tables keep only the row id, the log id, and the ciphertext. The owner can change the entries in the app. <a href="#security">Security</a> describes the key, and <a href="#sharing">Who can see it</a> describes a shared log.</p>
