@@ -34,6 +34,8 @@
     }
     p, li { margin: 0.75rem 0; }
     ul { margin: 0.4rem 0 0.8rem; padding-left: 1.25rem; }
+    li ul { margin: 0.35rem 0 0.15rem; }
+    li li { margin: 0.25rem 0; }
     a { color: #0b3f8c; }
     a:hover { text-decoration-thickness: 0.12em; }
     a:focus-visible {
@@ -114,7 +116,15 @@
       <li><strong>A one-way fingerprint of the share secret.</strong> Supabase stores only that fingerprint (called SHA-256), so a scanned code can be matched. It cannot be turned back into the secret. The key and the secret themselves are never stored.</li>
       <li><strong>Phase colours.</strong> Stored only so each phase can be shown in its colour.</li>
       <li><strong>Health-data consent.</strong> The policy version (2026-10-17), your confirmation that you are an adult, and the time, so there is a record of that agreement. If you agree again, that record is replaced.</li>
-      <li><strong>A record for each lab photo you send.</strong> It keeps the consent, the policy version, and the time the photo was used. It has no photo and no email. It also enforces a daily limit of 20 sends in 24 hours, and it is kept until the account is deleted.</li>
+      <li><strong>A record for each lab photo you send:</strong>
+        <ul>
+          <li>The consent you gave and the policy version.</li>
+          <li>The time the photo was used.</li>
+          <li>No photo and no email.</li>
+          <li>Used to enforce a limit of 20 sends in 24 hours.</li>
+          <li>Kept until the account is deleted.</li>
+        </ul>
+      </li>
       <li><strong>Passkey public key and sign-in session data.</strong> The public key is stored only if you add a passkey, so you can sign in with it later. IP addresses are removed from sign-in sessions and from the records of those sign-ins.</li>
       <li><strong>Subscription status, from app version 1.1.</strong> Handled with RevenueCat and Apple. RevenueCat receives only the account ID and the App Store receipt, not your email, to determine access to paid features. <a href="#providers">Service providers</a> explains that check.</li>
       <li><strong>The lab photo, when you choose to interpret one.</strong> The cropped image is re-drawn on the phone and sent to xAI with no account ID, no email, and no other log data. It is not stored. The reading comes back to the phone and is encrypted only when you save it. You confirm that the name and ID number are cropped out, and you agree to send it, before it goes.</li>
