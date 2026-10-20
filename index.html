@@ -127,7 +127,7 @@
       </li>
       <li><strong>Passkey public key and sign-in session data.</strong> The public key is stored only if you add a passkey, so you can sign in with it later. IP addresses are removed from sign-in sessions and from the records of those sign-ins.</li>
       <li><strong>Subscription status, from app version 1.1.</strong> Handled with RevenueCat and Apple. RevenueCat receives only the account ID and the App Store receipt, not your email, to determine access to paid features. <a href="#providers">Service providers</a> explains that check.</li>
-      <li><strong>A photo of your blood test results, when you choose to have it interpreted.</strong> The cropped image is re-drawn on the phone and sent to xAI with no account ID, no email, and no other log data. It is not stored. The reading comes back to the phone and is encrypted only when you save it. You confirm that the name and ID number are cropped out, and you agree to send it, before it goes.</li>
+      <li><strong>A photo of your blood test results, when you choose to have it interpreted.</strong> The cropped image is re-drawn on the phone and sent to xAI with no account ID, no email, and no other log data. It is not stored. The blood test values are sent back to your phone, and when you save them they are encrypted like the rest of your log. You confirm that the name and ID number are cropped out, and you agree to send it, before it goes.</li>
     </ul>
 
     <h2>5. Other data</h2>
@@ -179,7 +179,7 @@
     <p>We do not store the photo. Feedback opens the Mail app. What you send is the note you write, plus the app version, the iOS version, and the language. The log is not attached.</p>
 
     <h2 id="ai">11. AI</h2>
-    <p>A photo of your blood test results (a lab photo) is cropped and re-drawn on the phone, then sent through a Supabase task called interpret-lab, and from there to xAI at api.x.ai in the USA, outside the European Economic Area. This happens only after those two confirmations. It is sent with no account ID, no email, and no other log data. The request tells xAI not to store the photo. In that request the setting is called store: false. The xAI account is set the same way, which xAI calls Zero Data Retention. We do not store the photo, and xAI does not store it. The reading comes back to the phone. Nothing from a reading is saved to the log until you approve the draft, and it is encrypted only when you save it.</p>
+    <p>A photo of your blood test results (a lab photo) is cropped and re-drawn on the phone, then sent through a Supabase task called interpret-lab, and from there to xAI at api.x.ai in the USA, outside the European Economic Area. This happens only after those two confirmations. It is sent with no account ID, no email, and no other log data. The request tells xAI not to store the photo. In that request the setting is called store: false. The xAI account is set the same way, which xAI calls Zero Data Retention. We do not store the photo, and xAI does not store it. The blood test values are sent back to your phone. Nothing is saved to the log until you approve the draft, and when you save them they are encrypted like the rest of your log.</p>
     <p>From app version 1.1, the server checks the subscription status with RevenueCat before the photo is sent. That check uses the account ID and the App Store receipt. The photo is not sent to RevenueCat.</p>
     <p>xAI describes its own handling in the <a href="https://x.ai/legal/privacy-policy">xAI privacy policy</a>.</p>
 
