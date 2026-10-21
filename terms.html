@@ -5,78 +5,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Terms of Use for Press Pulse Log</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.5; max-width: 40rem; margin: 2rem auto; padding: 0 1rem; color: #1c1c1c; }
-    h1 { font-size: 1.6rem; }
-    h2 { font-size: 1.2rem; margin-top: 2rem; }
-    p, ul { margin: 0.8rem 0; }
-    ul { padding-left: 1.25rem; }
-    li { margin: 0.4rem 0; }
-    address { font-style: normal; margin: 0.8rem 0; }
-    a { overflow-wrap: anywhere; }
-    a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      max-width: 40rem;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 3.5rem;
+      color: #1c1c1c;
+      background: #fff;
+    }
+    h1 {
+      font-size: 1.7rem;
+      line-height: 1.25;
+      font-weight: 600;
+      margin: 0 0 0.4rem;
+    }
+    h2 {
+      font-size: 1.22rem;
+      line-height: 1.3;
+      font-weight: 600;
+      margin: 2.25rem 0 0.6rem;
+    }
+    p, li { margin: 0.75rem 0; }
+    ul { margin: 0.4rem 0 0.8rem; padding-left: 1.25rem; }
+    a { color: #0b3f8c; overflow-wrap: anywhere; }
+    a:hover { text-decoration-thickness: 0.12em; }
+    a:focus-visible {
+      outline: 2px solid #0b3f8c;
+      outline-offset: 3px;
+    }
+    .updated {
+      margin: 0 0 1.1rem;
+      color: #333;
+    }
+    .intro { font-size: 1.05rem; }
+    .contact {
+      margin-top: 2.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid #d8d8d8;
+    }
+    .contact p { margin: 0.35rem 0; }
+    .skip {
+      position: absolute;
+      left: 0.75rem;
+      top: 0.75rem;
+      transform: translateY(-150%);
+      background: #fff;
+      padding: 0.4rem 0.6rem;
+    }
+    .skip:focus { transform: none; }
   </style>
 </head>
 <body>
-  <main>
+  <a class="skip" href="#content">Skip to content</a>
+  <header>
     <h1>Terms of Use for Press Pulse Log</h1>
-    <p>Last updated 20 October 2026.</p>
-    <p>These terms apply when you use Press Pulse Log. By creating an account or using the app, you accept them. Øyvind Elgvin, a private individual in Norway, provides the app. Questions go to <a href="mailto:support@presspulselog.com">support@presspulselog.com</a>.</p>
+    <p class="updated">Last updated <time datetime="2026-10-21">21 October 2026</time>.</p>
+  </header>
+  <main id="content">
+    <p class="intro">These terms apply when you use Press Pulse Log. Creating an account or using the app accepts them. Personal data is described in the <a href="index.html">privacy policy</a>.</p>
 
-    <h2>1. Who the app is for</h2>
-    <p>Press Pulse Log is for adults. You must be 18 or older.</p>
-    <p>You sign in with a one-time code sent to your email, or with a passkey. You keep a personal log. The log can hold doses, GKI readings, pulse sessions, and lab results, and the app can show charts and a calendar. What you can add without the monthly subscription is set out below.</p>
+    <h2>1. Who provides the app</h2>
+    <p>Press Pulse Log is currently run by Øyvind Elgvin as a private individual in Norway. He provides the app and is responsible for these terms. Questions go to <a href="mailto:support@presspulselog.com">support@presspulselog.com</a>.</p>
 
-    <h2>2. Not medical advice</h2>
-    <p>Press Pulse Log is a personal logging tool. It is not a medical device. It does not diagnose, treat, or give medical advice.</p>
-    <p>Lab photos can be sent to xAI for an interpretation only if you agree. That reading can be wrong. It must not replace a doctor or other qualified health professional. Nothing from a reading is saved to the log until you approve it.</p>
+    <h2>2. Who the app is for</h2>
+    <p>Press Pulse Log is for adults. Before the log opens you confirm that you are 18 or older, and you agree that the log is health data.</p>
+    <p>There is no password. You first sign in with a one-time code sent to your email. After that, you can add a passkey. Sign-in is described in the <a href="index.html">privacy policy</a>.</p>
+    <p>The app is a personal log of medicines and supplements, doses, health measurements, and blood tests. Health measurements include GKI measurements and pulse sessions. What you can add without the monthly subscription is set out below.</p>
 
-    <h2>3. Sharing a log</h2>
-    <p>You can share a log with a QR code or a text share code. Anyone with the code can read the log. They cannot change it. You are responsible for who you give the code to.</p>
-    <p>You can rotate the code. A new code stops new people from joining with the old one. Phones that already have the key can still read the log.</p>
+    <h2>3. Not medical advice</h2>
+    <p>The app does not give medical advice. It is a personal log. It is not a medical device. It does not diagnose or treat.</p>
+    <p>A photo of your blood test results is taken with the camera. The app does not import a photo from the photo library, and it does not import a PDF. The photo is sent only for AI value extraction, and only if you agree. The photo is never stored. Nothing is saved to the log until you approve the draft. The extracted values can be wrong. They do not replace a doctor. That photo is described in the <a href="index.html#ai">privacy policy</a>.</p>
 
-    <h2>4. Free use and the monthly subscription</h2>
-    <p>The app itself is free to download and use. From version 1.1, an optional monthly subscription unlocks the Pro features.</p>
-    <p>Free use covers logging doses and the dose chart, viewing graphs, read-only access to a log someone has shared with you, and downloading and deleting your data.</p>
-    <p>The monthly subscription (Pro) is auto-renewing, and it is monthly only. It unlocks the calendar, new GKI readings, pulse sessions, lab rows, lab photos and AI interpretation, and showing and rotating the share code. The length is one month. The price is the price shown in the App Store before you subscribe. The subscription title is the title shown in the App Store before you subscribe.</p>
-    <p>Apple handles the purchase, billing, renewal, cancellation, and any refund, under your Apple ID. The app does not receive your payment details. A person who only reads a shared log does not pay.</p>
+    <h2>4. Your log</h2>
+    <p>Supabase is the database. Medicines and supplements, doses, phases, calendar appointments, GKI measurements, pulse sessions, and lab results are end-to-end encrypted on the phone before they are sent. The decryption key is created on the phone. It is kept in iCloud Keychain and in the QR share code. The decryption key is never sent to the database. If the key is lost, the data may not be recoverable. No backup copy is kept.</p>
+    <p>What is stored, and what is not, is described in the <a href="index.html">privacy policy</a>.</p>
+
+    <h2>5. Sharing a log</h2>
+    <p>The person who created the log can share it with a QR code or a text code. Anyone with the code can read the log and cannot change it. You are responsible for who receives the code. A person who only reads a shared log does not pay. Who can see a log is described in the <a href="index.html#sharing">privacy policy</a>.</p>
+
+    <h2>6. The monthly subscription</h2>
+    <p>Press Pulse Log is free to download. Dose logging and the dose chart are free to use.</p>
+    <p>The calendar, GKI measurements, pulse sessions, blood tests, and the share code need the monthly auto-renewing subscription. The subscription is oyvineng.presspulselog.monthly. The length is one month. The price is the price shown in the App Store.</p>
+    <p>Payment, renewal, cancellation, and refunds are handled by Apple in the Apple ID account settings. The app does not receive your card or payment details. Restore Purchases is in Settings. Cancelling does not delete the log.</p>
     <ul>
-      <li>Payment is charged to your Apple ID account when you confirm the purchase.</li>
-      <li>The subscription renews automatically unless you cancel at least 24 hours before the end of the current period.</li>
-      <li>Your account is charged for renewal within 24 hours before the current period ends, at the renewal price shown for that period.</li>
-      <li>You manage the subscription and turn off renewal in your Apple ID subscription settings.</li>
-      <li>If a free trial is offered, it applies only to the optional monthly subscription (Pro). It does not apply to downloading or using the app. The trial turns into that paid subscription unless you cancel before the trial ends. Any unused part of a free trial is forfeited if you purchase the monthly subscription during the trial.</li>
+      <li>Payment is charged to the Apple ID account when the purchase is confirmed.</li>
+      <li>The subscription renews unless it is cancelled at least 24 hours before the end of the current period.</li>
+      <li>The account is charged for renewal within 24 hours before the current period ends, at the price shown for the renewal.</li>
+      <li>You manage the subscription and turn off renewal in the Apple ID account settings.</li>
       <li>Refunds are handled by Apple.</li>
     </ul>
 
-    <h2>5. Acceptable use</h2>
-    <p>Use the app lawfully. Do not try to reach another person’s data except through a share code they gave you. Do not abuse the service, and do not reverse engineer it.</p>
+    <h2>7. Acceptable use</h2>
+    <p>Use the app lawfully. Do not try to reach another person’s log except with a share code they gave you. Do not abuse the service, and do not reverse engineer it.</p>
 
-    <h2>6. Your data</h2>
-    <p>Health data in the log is end-to-end encrypted. You are responsible for keeping access to your device, your iCloud Keychain, and any share code. If the key is lost, the data may not be recoverable. There are no backups.</p>
-    <p>How personal data is processed is described in the <a href="index.html">privacy policy</a>.</p>
+    <h2>8. Ending use</h2>
+    <p>You can delete your data in the app by choosing Delete my data. What that removes is described in the <a href="index.html">privacy policy</a>.</p>
+    <p>Øyvind Elgvin may end the service, or remove an account that breaks these terms, and will give notice where that is reasonable.</p>
 
-    <h2>7. Ending use</h2>
-    <p>You can delete your account in the app by choosing Delete my data. Øyvind Elgvin may end the service, or remove an account that breaks these terms, and will give notice where that is reasonable.</p>
-
-    <h2>8. Availability and liability</h2>
+    <h2>9. Availability and liability</h2>
     <p>The app is provided as it is. There is no promise that it will be available without interruption.</p>
-    <p>Liability is limited to the extent Norwegian law allows. These terms do not remove rights that the law says cannot be waived.</p>
+    <p>Liability is limited to the extent Norwegian law allows. These terms do not remove rights that cannot be waived.</p>
 
-    <h2>9. Changes</h2>
-    <p>These terms may be updated. The date at the top of this page is the date of the latest version. Material changes are communicated in the app or on this page.</p>
+    <h2>10. Changes</h2>
+    <p>These terms may be updated. The date at the top is when they were last updated. A material change is communicated in the app or on this page.</p>
 
-    <h2>10. Norwegian law</h2>
-    <p>Norwegian law applies to these terms and to the service provided by Øyvind Elgvin. If you are a consumer, you keep the mandatory rights you have under consumer law.</p>
+    <h2>11. Norwegian law</h2>
+    <p>Norwegian law applies to these terms. If you are a consumer, you keep the mandatory rights under consumer law.</p>
 
-    <h2>11. Apple</h2>
-    <p>Apple’s <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Standard Licensed Application End User License Agreement</a> also applies to the app from the App Store. Under that license, Apple is not responsible for Press Pulse Log or its content. Apple has no duty to maintain or support the app. Claims about the app, including product claims and claims that it infringes someone else’s rights, are for Øyvind Elgvin to answer, not Apple. Apple and Apple’s subsidiaries may enforce that standard license as third-party beneficiaries.</p>
-
-    <h2>12. Contact</h2>
-    <address>
-      Øyvind Elgvin<br>
-      Private individual in Norway<br>
-      <a href="mailto:support@presspulselog.com">support@presspulselog.com</a>
-    </address>
+    <h2>12. Apple</h2>
+    <p>Apple’s <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Standard Licensed Application End User License Agreement</a> also applies to the app from the App Store. Apple is not responsible for Press Pulse Log or its content. Apple has no duty to maintain or support the app. Claims about the app are for Øyvind Elgvin to answer, not Apple. Apple and Apple’s subsidiaries may enforce that standard license.</p>
   </main>
+  <footer class="contact">
+    <h2>Contact</h2>
+    <p>Øyvind Elgvin</p>
+    <p>Press Pulse Log</p>
+    <p><a href="mailto:support@presspulselog.com">support@presspulselog.com</a></p>
+    <p>Personal data is described in the <a href="index.html">privacy policy</a>.</p>
+  </footer>
 </body>
 </html>
